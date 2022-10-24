@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "Script MT Bold";
+  src: url(../fonts/SCRIPTBL.TTF);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.left {
+  max-height: 100vh;
+  display: flex;
+  position: relative;
+  max-height: 100%;
+  background-size: 100% 100%;
+}
+
+.right {
+  display: flex;
+  background: #262837;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Script MT Bold";
+  font-size: 96px;
+  flex: 1 1 100%;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background: rgb(34, 33, 31, 0.24);
+}
+
+.login-card {
+  border-radius: 15px;
+  flex: 1 1 500px;
+  max-width: 500px;
+  margin: 0px 128px;
+  padding: 67px 81px;
+  height: 550px;
+  background: #1f1d2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card {
+  border-radius: 15px;
+  flex: 1 1 500px;
+  max-width: 500px;
+  margin: 0px 128px;
+  padding: 67px 81px;
+  height: 650px;
+  background: #1f1d2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card .login {
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 16px;
+  color: #dedfe4;
+  margin-bottom: 57px;
+  font-family: "Lato", sans-serif;
+}
+
+.register-card .register {
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 16px;
+  margin-bottom: 30px;
+  color: #dedfe4;
+  font-family: "Lato", sans-serif;
+}
+
+form label {
+  color: #dedfe4;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Lato", sans-serif;
+}
+
+form input {
+  flex-shrink: 1;
+  width: 338px;
+  height: 56px;
+  border-radius: 8px;
+  gap: 80px;
+  padding: 16px 24px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: 1px solid #a9a9a9;
+  color: #a9a9a9;
+}
+
+form button {
+  width: 338px;
+  height: 56px;
+  background: #eb7c68;
+  color: #dedfe4;
+  border-radius: 8px;
+  border: none;
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+}
