@@ -90,20 +90,30 @@ const CreateRecipe = () => {
       <NavBar></NavBar>
       <Box>
         <Box
+          component="div"
           sx={{
-            height: "92px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             paddingTop: "20px",
             paddingBottom: "19px",
-            paddingLeft: "56px",
           }}
         >
-          <Typography variant="h6" sx={{ color: "primary.contrastText" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              paddingLeft: "56px",
+              color: "primary.contrastText",
+              alignSelf: "flex-start",
+            }}
+          >
             Create Recipe
           </Typography>
           <Grid
             container
             direction="row"
             columnGap={5}
+            alignSelf="center"
             sx={{
               width: "1438px",
               height: "530px",

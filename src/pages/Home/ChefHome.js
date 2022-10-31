@@ -5,13 +5,11 @@ import MenuCard from "../../components/MenuCard";
 import MenuButton from "../../components/MenuButton";
 import Prompt from "../../components/Prompt";
 import UserContext from "../../frontendApis/user";
-import RecipeContext from "../../frontendApis/recipe";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ChefHome = () => {
   const { name } = useContext(UserContext);
-  const { getRecipe, createRecipe } = useContext(RecipeContext);
   const navigate = useNavigate();
 
   return (

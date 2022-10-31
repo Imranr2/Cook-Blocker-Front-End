@@ -9,7 +9,6 @@ export const RecipeContextProvider = ({ children }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [recipes, setRecipes] = useState(null);
   const [recipe, setRecipe] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
 
   const getRecipe = () => {
     authAxios
@@ -67,8 +66,6 @@ export const RecipeContextProvider = ({ children }) => {
       })
       .then((res) => {
         const data = res.data;
-        setImageUrl(data.imageUrl);
-        console.log(data.imageUrl);
         return authAxios.post("/menuitem", {
           name: name,
           desc: description,
@@ -90,48 +87,6 @@ export const RecipeContextProvider = ({ children }) => {
         setTimeout(() => {
           setErrorMsg("");
         }, 3000);
-      });
-
-    // authAxios
-    //   .post("/menuitem", {
-    //     name: name,
-    //     desc: description,
-    //     price: parseFloat(price),
-    //     steps: steps,
-    //     imageUrl: imageUrl,
-    //     ingredients: ingredients,
-    //   })
-    //   .then((res) => {
-    //     console.log("sent");
-    //     const data = res.data;
-    //     if (data.errorCode !== 0) {
-    //       throw Error(data.error);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //     setErrorMsg(err.message);
-    //     setTimeout(() => {
-    //       setErrorMsg("");
-    //     }, 3000);
-    //   });
-  };
-
-  const uploadImage = async (image) => {
-    const formData = new FormData();
-    formData.append("image", image);
-    authAxios
-      .post("/menuitem/image", formData, {
-        headers: {
-          "Content-Type": "multipaprt/form-data",
-        },
-      })
-      .then((res) => {
-        const data = res.data;
-        setImageUrl(data.ImageUrl);
-      })
-      .catch((err) => {
-        console.log(err.message);
       });
   };
 
