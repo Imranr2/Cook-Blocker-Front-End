@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import LandingImage from "../../asset/LandingImage.svg";
 import { UserContext } from "../../frontendApis/user";
 
 const Register = () => {
@@ -21,10 +20,10 @@ const Register = () => {
   return (
     <div className="container">
       <div className="left">
-        <img className="landing-image" src={LandingImage} alt="" />
+        <img className="landing-image" src="/LandingImage.svg" alt="" />
         <div className="title">
-          <font color="#EB7C68">Cook</font>
-          <font color="#EAECF5">Blocker</font>
+          <span color="#EB7C68">Cook</span>
+          <span color="#EAECF5">Blocker</span>
         </div>
       </div>
       <div className="right">

@@ -1,12 +1,14 @@
-import authAxios from "../frontendApis/axiosClient";
+import authAxios from "./axiosClient";
 import { useNavigate } from "react-router-dom";
 import { createContext, useState } from "react";
 
 export const UserContext = createContext(null);
 
 export const UserContextProvider = ({ children }) => {
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
   const [isAuth, setIsAuth] = useState(false);
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("chef");
   const navigate = useNavigate();
 
   const register = (username, password, name, role) => {
@@ -43,6 +45,9 @@ export const UserContextProvider = ({ children }) => {
         if (data.errorCode !== 0) {
           throw Error(data.error);
         }
+        const user = data.user;
+        setName(user.name);
+        setRole(user.role);
         setIsAuth(true);
         navigate("/home");
       })
@@ -55,10 +60,10 @@ export const UserContextProvider = ({ children }) => {
   };
 
   const value = {
+    name,
+    role,
     errorMsg,
-    setErrorMsg,
     isAuth,
-    setIsAuth,
     register,
     login,
   };
