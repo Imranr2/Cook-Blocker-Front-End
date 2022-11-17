@@ -76,6 +76,12 @@ const CreateRecipe = () => {
 
   const create = () => {
     createRecipe(recipeName, description, price, steps, image, ingredients);
+    setRecipeName("");
+    setDescription("");
+    setPrice("");
+    setSteps("");
+    setImage(null);
+    setIngredients([]);
   };
 
   return (
@@ -246,7 +252,10 @@ const CreateRecipe = () => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={() => addIngredient(ingredient)}>
+                      <IconButton
+                        sx={{ type: "submit" }}
+                        onClick={() => addIngredient(ingredient)}
+                      >
                         <AddIcon sx={{ color: "primary.light" }} />
                       </IconButton>
                     </InputAdornment>
@@ -350,16 +359,16 @@ const CreateRecipe = () => {
                     width: "250px",
                     height: "250px",
                     gap: "10px",
+                    position: "relative",
                   }}
                 >
                   {image ? (
                     <Box>
                       <IconButton
                         sx={{
-                          position: "fixed",
-                          top: 230,
-                          right: 75,
-                          zIndex: 2000,
+                          position: "absolute",
+                          top: 0,
+                          right: 0,
                           color: "primary.light",
                         }}
                         onClick={() => setImage(null)}

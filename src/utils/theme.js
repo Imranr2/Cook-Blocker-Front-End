@@ -60,5 +60,9 @@ export const theme = createTheme({
       fontSize: "16px",
       fontWeight: 500,
     },
+    body2: {
+      fontSize: "14px",
+      fontWeight: 500,
+    },
   },
 });
