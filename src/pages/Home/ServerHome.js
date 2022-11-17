@@ -6,9 +6,11 @@ import MenuButton from "../../components/MenuButton";
 import Prompt from "../../components/Prompt";
 import UserContext from "../../frontendApis/user";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ChefHome = () => {
   const { name } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -44,7 +46,9 @@ const ChefHome = () => {
               Reservations
             </Typography>
             <Box component="img" src="reservation.svg"></Box>
-            <MenuButton>View Reservations</MenuButton>
+            <MenuButton onClick={() => navigate("/reservation")}>
+              View Reservations
+            </MenuButton>
             <MenuButton>Create Reservation</MenuButton>
           </MenuCard>
           <MenuCard>
