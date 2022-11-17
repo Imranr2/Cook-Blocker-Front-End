@@ -12,6 +12,7 @@ import UserContext from "./frontendApis/user";
 import { RecipeContextProvider } from "./frontendApis/recipe";
 import ViewRecipe from "./pages/Recipe/ViewRecipe";
 import CreateRecipe from "./pages/Recipe/CreateRecipe";
+import { ViewReservation } from "./pages/Reservation/ViewReservation";
 
 function App() {
   const { role } = useContext(UserContext);
@@ -30,7 +31,7 @@ function App() {
                 <ServerHome />
               )
             }
-          ></Route>
+          />
           <Route
             path="/recipe"
             element={
@@ -38,7 +39,7 @@ function App() {
                 <ViewRecipe />
               </RecipeContextProvider>
             }
-          ></Route>
+          />
           <Route
             path="/createRecipe"
             element={
@@ -46,7 +47,8 @@ function App() {
                 <CreateRecipe />
               </RecipeContextProvider>
             }
-          ></Route>
+          />
+          <Route path="/reservation" element={<ViewReservation />} />
         </Route>
         <Route path="/" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
