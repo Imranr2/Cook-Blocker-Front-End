@@ -15,6 +15,7 @@ const MenuButton = (props) => {
           backgroundColor: "secondary.light",
         },
         width: "208px",
+        ...props.sx,
       }}
     >
       {props.children}
