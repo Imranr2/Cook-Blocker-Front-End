@@ -67,11 +67,18 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+    <Paper
+      sx={{
+        width: "100%",
+        overflow: "hidden",
+        boxShadow: "none",
+        borderRadius: 0,
+      }}
+    >
       <TableContainer
         sx={{
           maxHeight: 440,
-          backgroundColor: "primary.main",
+          backgroundColor: "secondary.main",
           color: "primary.contrastText",
         }}
       >
@@ -84,7 +91,7 @@ export default function StickyHeadTable() {
                   align={column.align}
                   sx={{
                     minWidth: column.minWidth,
-                    backgroundColor: "primary.main",
+                    backgroundColor: "secondary.main",
                     color: "primary.contrastText",
                   }}
                 >
@@ -103,6 +110,9 @@ export default function StickyHeadTable() {
                     role="checkbox"
                     tabIndex={-1}
                     key={row.contactNo}
+                    sx={{
+                      borderBottom: "2px solid black",
+                    }}
                   >
                     {columns.map((column) => {
                       const value = row[column.id];
@@ -116,6 +126,9 @@ export default function StickyHeadTable() {
                               bgColor="transparent"
                               color="primary.light"
                               sx={{
+                                width: "78px",
+                                padding: "0px",
+                                margin: "0px",
                                 border: 2,
                               }}
                             >
@@ -132,6 +145,11 @@ export default function StickyHeadTable() {
                               onClick={() => console.log("fulfill")}
                               bgColor="primary.light"
                               bgHover="secondary.light"
+                              sx={{
+                                width: "78px",
+                                padding: "0px",
+                                margin: "0px",
+                              }}
                             >
                               Fulfill
                             </ActionButton>
@@ -164,7 +182,10 @@ export default function StickyHeadTable() {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        sx={{ backgroundColor: "primary.main", color: "primary.contrastText" }}
+        sx={{
+          backgroundColor: "secondary.main",
+          color: "primary.contrastText",
+        }}
       />
     </Paper>
   );

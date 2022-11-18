@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import NavBar from "../../components/Navbar";
 import MenuButton from "../../components/MenuButton";
 import { useNavigate } from "react-router-dom";
