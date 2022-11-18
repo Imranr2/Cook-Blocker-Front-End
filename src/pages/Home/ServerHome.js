@@ -49,7 +49,9 @@ const ChefHome = () => {
             <MenuButton onClick={() => navigate("/reservation")}>
               View Reservations
             </MenuButton>
-            <MenuButton>Create Reservation</MenuButton>
+            <MenuButton onClick={() => navigate("/createReservation")}>
+              Create Reservation
+            </MenuButton>
           </MenuCard>
           <MenuCard>
             <Typography variant="h6" sx={{ color: "primary.contrastText" }}>

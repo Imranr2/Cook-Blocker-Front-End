@@ -17,7 +17,7 @@ const ActionButton = (props) => {
           color: props.colorHover,
           borderColor: props.bgHover,
         },
-        width: "78px",
+        width: props.width,
         padding: "0px",
         margin: "0px",
         ...props.sx,
