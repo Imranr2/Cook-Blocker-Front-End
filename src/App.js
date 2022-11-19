@@ -14,6 +14,7 @@ import ViewRecipe from "./pages/Recipe/ViewRecipe";
 import CreateRecipe from "./pages/Recipe/CreateRecipe";
 import { ViewReservation } from "./pages/Reservation/ViewReservation";
 import CreateReservation from "./pages/Reservation/CreateReservation";
+import CreateOrder from "./pages/Order/CreateOrder";
 
 function App() {
   const { role } = useContext(UserContext);
@@ -51,6 +52,7 @@ function App() {
           />
           <Route path="/reservation" element={<ViewReservation />} />
           <Route path="/createReservation" element={<CreateReservation />} />
+          <Route path="/createOrder" element={<CreateOrder />} />
         </Route>
         <Route path="/" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
