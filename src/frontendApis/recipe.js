@@ -84,7 +84,6 @@ export const RecipeContextProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
         setErrorMsg(err.message);
         setTimeout(() => {
           setErrorMsg("");

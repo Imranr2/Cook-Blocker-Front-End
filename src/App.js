@@ -15,6 +15,7 @@ import CreateRecipe from "./pages/Recipe/CreateRecipe";
 import { ViewReservation } from "./pages/Reservation/ViewReservation";
 import CreateReservation from "./pages/Reservation/CreateReservation";
 import CreateOrder from "./pages/Order/CreateOrder";
+import { OrderContextProvider } from "./frontendApis/order";
 
 function App() {
   const { role } = useContext(UserContext);
@@ -52,7 +53,14 @@ function App() {
           />
           <Route path="/reservation" element={<ViewReservation />} />
           <Route path="/createReservation" element={<CreateReservation />} />
-          <Route path="/createOrder" element={<CreateOrder />} />
+          <Route
+            path="/createOrder"
+            element={
+              <OrderContextProvider>
+                <CreateOrder />
+              </OrderContextProvider>
+            }
+          />
         </Route>
         <Route path="/" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
