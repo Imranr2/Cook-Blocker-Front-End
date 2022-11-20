@@ -20,7 +20,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const TableDropdown = () => {
-  const [age, setAge] = React.useState(-1);
+  const [age, setAge] = React.useState("");
   return (
     <div>
       <FormControl sx={{ m: 1, width: 170, marginLeft: "-1px" }}>
@@ -30,12 +30,15 @@ const TableDropdown = () => {
           displayEmpty
           input={<BootstrapInput />}
           renderValue={(selected) => {
-            if (selected === -1) {
+            if (selected === "") {
               return <em>Select a table no.</em>;
             }
             return selected;
           }}
         >
+          <MenuItem value="" style={{ display: "none" }}>
+            None
+          </MenuItem>
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
           <MenuItem value={30}>30</MenuItem>
