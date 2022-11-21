@@ -7,6 +7,7 @@ import Prompt from "../../components/Prompt";
 import UserContext from "../../frontendApis/user";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const ChefHome = () => {
   const { name } = useContext(UserContext);
@@ -60,6 +61,9 @@ const ChefHome = () => {
             </Typography>
             <Box component="img" src="order.svg"></Box>
             <MenuButton>View Orders</MenuButton>
+            <MenuButton sx={{ backgroundColor: "transparent" }} disabled>
+              <Typography sx={{ color: "transparent" }}>View Order</Typography>
+            </MenuButton>
           </MenuCard>
         </Grid>
       </Box>

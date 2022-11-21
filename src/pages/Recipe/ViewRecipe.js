@@ -5,6 +5,7 @@ import MenuButton from "../../components/MenuButton";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import RecipeContext from "../../frontendApis/recipe";
+import ActionButton from "../../components/ActionButton";
 
 const ViewRecipe = () => {
   const { loading, getRecipes, recipes, selectedRecipe } =
@@ -67,9 +68,21 @@ const ViewRecipe = () => {
                   >
                     All Recipes
                   </Typography>
-                  <MenuButton onClick={() => navigate("/createRecipe")}>
+                  <ActionButton
+                    onClick={() => navigate("/createRecipe")}
+                    bgHover="secondary.light"
+                    colorHover="#3D3C3A"
+                    bgColor="transparent"
+                    color="primary.light"
+                    sx={{
+                      width: "140px",
+                      padding: "5px 10px",
+                      margin: "0px",
+                      border: 2,
+                    }}
+                  >
                     Create Recipe
-                  </MenuButton>
+                  </ActionButton>
                 </Grid>
 
                 <Grid

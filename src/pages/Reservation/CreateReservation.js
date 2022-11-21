@@ -10,6 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import ActionButton from "../../components/ActionButton";
 import TableDropdown from "./TableDropdown";
+import { withStyles } from "@material-ui/core";
 
 const CreateReservation = () => {
   const [customerName, setCustomerName] = useState("");
@@ -17,6 +18,16 @@ const CreateReservation = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [pax, setPax] = useState(0);
+
+  const CssTextField = withStyles({
+    root: {
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "transparent",
+        },
+      },
+    },
+  })(TextField);
 
   return (
     <Grid
@@ -79,7 +90,7 @@ const CreateReservation = () => {
               >
                 Customer Name
               </Typography>
-              <TextField
+              <CssTextField
                 value={customerName}
                 variant="outlined"
                 label={customerName === "" ? "Customer name" : ""}
@@ -92,10 +103,11 @@ const CreateReservation = () => {
                 }}
                 sx={{
                   backgroundColor: "secondary.main",
-                  width: "370px",
+                  width: "384px",
                   input: {
                     color: "#A9A9A9",
                   },
+                  borderRadius: "8px",
                 }}
                 onChange={(e) => setCustomerName(e.target.value)}
               />
@@ -107,7 +119,7 @@ const CreateReservation = () => {
               >
                 Contact No.
               </Typography>
-              <TextField
+              <CssTextField
                 value={contactNo}
                 variant="outlined"
                 label={contactNo === "" ? "+1 (xxx) xxx-xxxx" : ""}
@@ -120,14 +132,15 @@ const CreateReservation = () => {
                 }}
                 sx={{
                   backgroundColor: "secondary.main",
-                  width: "370px",
+                  width: "384px",
                   input: {
                     color: "#A9A9A9",
                   },
+                  borderRadius: "8px",
                 }}
                 onChange={(e) => setContactNo(e.target.value)}
               />
-              <Box sx={{ display: "flex", gap: "10px" }}>
+              <Box sx={{ display: "flex", gap: "24px" }}>
                 <Grid container direction="column">
                   <Typography
                     variant="body1"
@@ -142,7 +155,7 @@ const CreateReservation = () => {
                       value={date || null}
                       onChange={(newDate) => setDate(newDate)}
                       renderInput={(params) => (
-                        <TextField
+                        <CssTextField
                           {...params}
                           variant="outlined"
                           inputProps={{
@@ -156,13 +169,18 @@ const CreateReservation = () => {
                             input: {
                               color: "#A9A9A9",
                             },
+                            borderRadius: "8px",
                           }}
                         />
                       )}
                     />
                   </LocalizationProvider>
                 </Grid>
-                <Grid container direction="column">
+                <Grid
+                  container
+                  direction="column"
+                  sx={{ backgroundColor: "primary.main" }}
+                >
                   <Typography
                     variant="body1"
                     sx={{
@@ -176,9 +194,8 @@ const CreateReservation = () => {
                       value={time || null}
                       onChange={(newTime) => setTime(newTime)}
                       renderInput={(params) => (
-                        <TextField
+                        <CssTextField
                           {...params}
-                          variant="outlined"
                           inputProps={{
                             maxLength: 38,
                             ...params.inputProps,
@@ -190,6 +207,7 @@ const CreateReservation = () => {
                             input: {
                               color: "#A9A9A9",
                             },
+                            borderRadius: "8px",
                           }}
                         />
                       )}

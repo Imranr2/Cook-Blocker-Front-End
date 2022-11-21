@@ -11,8 +11,14 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     position: "relative",
     backgroundColor: "transparent",
     border: "1px solid #ced4da",
-    padding: "10px 0px 10px 14px",
     color: "#A9A9A9",
+    height: "40px",
+    width: "145px",
+    display: "flex",
+    padding: "0px",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "8px",
   },
   "& .MuiSvgIcon-root": {
     color: "#EB7C68",
@@ -20,22 +26,25 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const TableDropdown = () => {
-  const [age, setAge] = React.useState(-1);
+  const [age, setAge] = React.useState("");
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 170, marginLeft: "-1px" }}>
+      <FormControl sx={{ m: 1, marginLeft: "-1px" }}>
         <Select
           value={age}
           onChange={(event) => setAge(event.target.value)}
           displayEmpty
           input={<BootstrapInput />}
           renderValue={(selected) => {
-            if (selected === -1) {
+            if (selected === "") {
               return <em>Select a table no.</em>;
             }
             return selected;
           }}
         >
+          <MenuItem value="" style={{ display: "none" }}>
+            None
+          </MenuItem>
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
           <MenuItem value={30}>30</MenuItem>

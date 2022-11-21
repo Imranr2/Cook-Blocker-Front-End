@@ -11,25 +11,25 @@ import ActionButton from "../../components/ActionButton";
 
 const columns = [
   { id: "date", label: "Date", minWidth: 100 },
-  { id: "time", label: "Time", minWidth: 100 },
+  { id: "time", label: "|" + "\xa0\xa0" + "Time", minWidth: 100 },
   {
     id: "customerName",
-    label: "Customer Name",
+    label: "|" + "\xa0\xa0" + "Customer Name",
     minWidth: 170,
   },
   {
     id: "contactNo",
-    label: "Contact No.",
+    label: "|" + "\xa0\xa0" + "Contact No.",
     minWidth: 170,
   },
   {
     id: "pax",
-    label: "No. of Pax",
+    label: "|" + "\xa0\xa0" + "No. of Pax",
     minWidth: 100,
   },
   {
     id: "table",
-    label: "Table No.",
+    label: "|" + "\xa0\xa0" + "Table No.",
     minWidth: 100,
   },
   {
@@ -92,7 +92,7 @@ export default function StickyHeadTable() {
                   sx={{
                     minWidth: column.minWidth,
                     backgroundColor: "secondary.main",
-                    color: "primary.contrastText",
+                    color: "secondary.contrastText",
                   }}
                 >
                   {column.label}
@@ -130,6 +130,7 @@ export default function StickyHeadTable() {
                                 padding: "0px",
                                 margin: "0px",
                                 border: 2,
+                                borderRadius: "8px",
                               }}
                             >
                               Edit
@@ -147,8 +148,8 @@ export default function StickyHeadTable() {
                               bgHover="secondary.light"
                               sx={{
                                 width: "78px",
-                                padding: "0px",
-                                margin: "0px",
+                                ml: "-20px",
+                                borderRadius: "8px",
                               }}
                             >
                               Fulfill

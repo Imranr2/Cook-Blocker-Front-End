@@ -59,7 +59,9 @@ const ChefHome = () => {
             </Typography>
             <Box component="img" src="order.svg"></Box>
             <MenuButton>View Orders</MenuButton>
-            <MenuButton>Create Order</MenuButton>
+            <MenuButton onClick={() => navigate("/createOrder")}>
+              Create Order
+            </MenuButton>
           </MenuCard>
         </Box>
       </Box>

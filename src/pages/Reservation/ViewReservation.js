@@ -34,7 +34,10 @@ export const ViewReservation = () => {
           >
             All Reservations
           </Typography>
-          <MenuButton onClick={() => navigate("/createRecipe")}>
+          <MenuButton
+            onClick={() => navigate("/createRecipe")}
+            sx={{ fontSize: "16px", fontWeight: 500 }}
+          >
             Create Reservation
           </MenuButton>
         </Grid>
