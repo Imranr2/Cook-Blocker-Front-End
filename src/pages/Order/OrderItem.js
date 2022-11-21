@@ -9,26 +9,32 @@ import {
 } from "@mui/material";
 import React, { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import RecipeContext from "../../frontendApis/recipe";
+import ActionButton from "../../components/ActionButton";
+import OrderContext from "../../frontendApis/order";
+import { useEffect } from "react";
+import { useTheme } from "styled-components";
 
-const OrderItem = ({
-  name,
-  imageUrl,
-  price,
-  description,
-  steps,
-  ingredients,
-}) => {
-  // const { setSelectedRecipe } = useContext(RecipeContext);
+const OrderItem = ({ id, name, imageUrl, price, description }) => {
+  const { orderItems, setOrderItems } = useContext(OrderContext);
 
-  // const setRecipe = () => {
-  //   setSelectedRecipe({
-  //     name: name,
-  //     description: description,
-  //     ingredients: ingredients,
-  //     steps: steps,
-  //   });
-  // };
+  const theme = useTheme();
+  const addOrderItem = () => {
+    for (var i = 0; i < orderItems.length; i++) {
+      if (orderItems[i].id == id) {
+        return;
+      }
+    }
+    setOrderItems([
+      ...orderItems,
+      {
+        id: id,
+        name: name,
+        imageUrl: imageUrl,
+        price: price,
+        qty: 1,
+      },
+    ]);
+  };
 
   return (
     <Card
@@ -49,16 +55,6 @@ const OrderItem = ({
           position: "relative",
         }}
       >
-        <IconButton
-          sx={{
-            position: "absolute",
-            top: "0",
-            right: "0",
-            color: "primary.light",
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
         <CardActionArea>
           <Box sx={{ width: "12em", height: "12em" }}>
             <img src={imageUrl} style={{ width: "100%" }} alt="Recipe"></img>
@@ -78,12 +74,21 @@ const OrderItem = ({
         <Typography variant="body2" sx={{ color: "secondary.contrastText" }}>
           {String(description).slice(0, 35) + "..."}
         </Typography>
-        <Typography
-          variant="subtitle1"
-          sx={{ alignSelf: "flex-end", color: "primary.contrastText" }}
-        >
-          {"CAD$" + price}
+        <Typography variant="subtitle1" sx={{ color: "primary.contrastText" }}>
+          {"CAD$" + price.toFixed(2)}
         </Typography>
+        <ActionButton
+          bgColor="primary.light"
+          bgHover="secondary.light"
+          sx={{
+            width: "100px",
+            padding: "2.75px 37.75px",
+            mt: "10px",
+          }}
+          onClick={addOrderItem}
+        >
+          Add
+        </ActionButton>
       </CardContent>
     </Card>
   );

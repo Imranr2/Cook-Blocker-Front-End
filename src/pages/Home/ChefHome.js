@@ -61,9 +61,9 @@ const ChefHome = () => {
             </Typography>
             <Box component="img" src="order.svg"></Box>
             <MenuButton>View Orders</MenuButton>
-            <Button disabled>
+            <MenuButton sx={{ backgroundColor: "transparent" }} disabled>
               <Typography sx={{ color: "transparent" }}>View Order</Typography>
-            </Button>
+            </MenuButton>
           </MenuCard>
         </Grid>
       </Box>

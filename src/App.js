@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ChefHome from "./pages/Home/ChefHome";
 import ServerHome from "./pages/Home/ServerHome";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./utils/theme";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import { useContext } from "react";

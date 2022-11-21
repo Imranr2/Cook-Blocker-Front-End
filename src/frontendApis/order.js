@@ -1,4 +1,6 @@
 import React from "react";
+import { createContext } from "react";
+import { useState } from "react";
 import authAxios from "./axiosClient";
 
 export const OrderContext = createContext(null);
@@ -9,6 +11,7 @@ export const OrderContextProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [orderItems, setOrderItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [totalCost, setTotalCost] = useState(0);
 
   const getRecipes = () => {
     authAxios
@@ -86,13 +89,24 @@ export const OrderContextProvider = ({ children }) => {
       });
   };
 
+  const getTotalCost = () => {
+    var newCost = 0;
+    for (var i = 0; i < orderItems.length; i++) {
+      newCost += orderItems[i].price * orderItems[i].qty;
+    }
+    setTotalCost(newCost.toFixed(2));
+  };
+
   const value = {
     recipes,
     loading,
     errorMsg,
+    orders,
     orderItems,
     setOrderItems,
+    totalCost,
     getRecipes,
+    getTotalCost,
     getOrders,
     createOrder,
     completeOrder,

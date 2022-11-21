@@ -82,7 +82,7 @@ const RecipeCard = ({
           variant="subtitle1"
           sx={{ alignSelf: "flex-end", color: "primary.contrastText" }}
         >
-          {"CAD$" + price}
+          {"CAD$" + price.toFixed(2)}
         </Typography>
       </CardContent>
     </Card>
