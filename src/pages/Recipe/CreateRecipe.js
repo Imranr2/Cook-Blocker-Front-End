@@ -19,6 +19,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import MenuButton from "../../components/MenuButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { withStyles } from "@material-ui/core";
 
 const CreateRecipe = () => {
   const [recipeName, setRecipeName] = useState("");
@@ -84,6 +85,16 @@ const CreateRecipe = () => {
     setIngredients([]);
   };
 
+  const CssTextField = withStyles({
+    root: {
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "transparent",
+        },
+      },
+    },
+  })(TextField);
+
   return (
     <Grid
       container
@@ -146,7 +157,7 @@ const CreateRecipe = () => {
                 >
                   Recipe Name
                 </Typography>
-                <TextField
+                <CssTextField
                   value={recipeName}
                   variant="outlined"
                   label={recipeName === "" ? "Recipe Name" : ""}
@@ -164,10 +175,11 @@ const CreateRecipe = () => {
                     input: {
                       color: "#A9A9A9",
                     },
+                    borderRadius: "8px",
                   }}
                   onChange={(e) => setRecipeName(e.target.value)}
                 />
-                <TextField
+                <CssTextField
                   value={description}
                   variant="outlined"
                   multiline
@@ -192,6 +204,7 @@ const CreateRecipe = () => {
                   sx={{
                     backgroundColor: "secondary.main",
                     width: "650px",
+                    borderRadius: "8px",
                   }}
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -205,7 +218,7 @@ const CreateRecipe = () => {
                 >
                   Preparation Details
                 </Typography>
-                <TextField
+                <CssTextField
                   value={steps}
                   variant="outlined"
                   multiline
@@ -224,6 +237,7 @@ const CreateRecipe = () => {
                   sx={{
                     backgroundColor: "secondary.main",
                     width: "650px",
+                    borderRadius: "8px",
                   }}
                   onChange={(e) => setSteps(e.target.value)}
                 />
@@ -238,7 +252,7 @@ const CreateRecipe = () => {
               >
                 Ingredients
               </Typography>
-              <TextField
+              <CssTextField
                 value={ingredient}
                 variant="outlined"
                 error={errorMsg !== ""}
@@ -267,6 +281,7 @@ const CreateRecipe = () => {
                   input: {
                     color: "#A9A9A9",
                   },
+                  borderRadius: "8px",
                 }}
                 onChange={(e) => setIngredient(e.target.value)}
               />
@@ -311,7 +326,7 @@ const CreateRecipe = () => {
               >
                 Set Price of Dish
               </Typography>
-              <TextField
+              <CssTextField
                 value={price}
                 variant="outlined"
                 label={price === "" ? "CAD$" : ""}
@@ -327,6 +342,7 @@ const CreateRecipe = () => {
                   input: {
                     color: "#A9A9A9",
                   },
+                  borderRadius: "8px",
                 }}
                 onChange={(e) => setPrice(e.target.value)}
               />
