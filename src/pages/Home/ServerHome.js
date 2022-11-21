@@ -8,7 +8,7 @@ import UserContext from "../../frontendApis/user";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ChefHome = () => {
+const ServerHome = () => {
   const { name } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -58,7 +58,9 @@ const ChefHome = () => {
               Orders
             </Typography>
             <Box component="img" src="order.svg"></Box>
-            <MenuButton>View Orders</MenuButton>
+            <MenuButton onClick={() => navigate("/order")}>
+              View Orders
+            </MenuButton>
             <MenuButton onClick={() => navigate("/createOrder")}>
               Create Order
             </MenuButton>
@@ -69,4 +71,4 @@ const ChefHome = () => {
   );
 };
 
-export default ChefHome;
+export default ServerHome;

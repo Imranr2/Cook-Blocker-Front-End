@@ -16,6 +16,7 @@ import { ViewReservation } from "./pages/Reservation/ViewReservation";
 import CreateReservation from "./pages/Reservation/CreateReservation";
 import CreateOrder from "./pages/Order/CreateOrder";
 import { OrderContextProvider } from "./frontendApis/order";
+import ViewOrder from "./pages/Order/ViewOrder";
 
 function App() {
   const { role } = useContext(UserContext);
@@ -53,6 +54,14 @@ function App() {
           />
           <Route path="/reservation" element={<ViewReservation />} />
           <Route path="/createReservation" element={<CreateReservation />} />
+          <Route
+            path="/order"
+            element={
+              <OrderContextProvider>
+                <ViewOrder />
+              </OrderContextProvider>
+            }
+          />
           <Route
             path="/createOrder"
             element={
