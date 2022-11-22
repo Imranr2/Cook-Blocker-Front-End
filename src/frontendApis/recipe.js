@@ -11,6 +11,7 @@ export const RecipeContextProvider = ({ children }) => {
   const [recipe, setRecipe] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
   const getRecipes = async () => {
     await authAxios
@@ -93,6 +94,7 @@ export const RecipeContextProvider = ({ children }) => {
   };
 
   const deleteRecipe = (id) => {
+    setRefresh(true);
     authAxios
       .delete(`/menuitem/${id}`, {})
       .then((res) => {
@@ -100,6 +102,7 @@ export const RecipeContextProvider = ({ children }) => {
         if (data.errorCode !== 0) {
           throw Error(data.error);
         }
+        setRefresh(false);
       })
       .catch((err) => {
         setErrorMsg(err.messsage);
@@ -116,6 +119,7 @@ export const RecipeContextProvider = ({ children }) => {
     errorMsg,
     setErrorMsg,
     selectedRecipe,
+    refresh,
     setSelectedRecipe,
     getRecipes,
     getRecipeWithID,

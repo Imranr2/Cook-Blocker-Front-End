@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import RecipeContext from "../../frontendApis/recipe";
 
 const RecipeCard = ({
+  id,
   name,
   imageUrl,
   price,
@@ -19,7 +20,7 @@ const RecipeCard = ({
   steps,
   ingredients,
 }) => {
-  const { setSelectedRecipe } = useContext(RecipeContext);
+  const { setSelectedRecipe, deleteRecipe } = useContext(RecipeContext);
 
   const setRecipe = () => {
     setSelectedRecipe({
@@ -56,6 +57,7 @@ const RecipeCard = ({
             right: "0",
             color: "primary.light",
           }}
+          onClick={() => deleteRecipe(id)}
         >
           <CloseIcon />
         </IconButton>

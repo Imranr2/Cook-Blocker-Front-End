@@ -7,6 +7,7 @@ const MenuButton = (props) => {
       component={props.component}
       onClick={props.onClick}
       variant="contained"
+      disabled={props.disabled}
       disableElevation
       sx={{
         textTransform: "none",

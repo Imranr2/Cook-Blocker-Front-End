@@ -12,6 +12,7 @@ export const OrderContextProvider = ({ children }) => {
   const [orderItems, setOrderItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalCost, setTotalCost] = useState(0);
+  const [refresh, setRefresh] = useState(false);
 
   const getRecipes = () => {
     authAxios
@@ -73,6 +74,8 @@ export const OrderContextProvider = ({ children }) => {
   };
 
   const completeOrder = (id) => {
+    setRefresh(true);
+
     authAxios
       .put(`/order/${id}`, {})
       .then((res) => {
@@ -80,6 +83,26 @@ export const OrderContextProvider = ({ children }) => {
         if (data.errorCode !== 0) {
           throw Error(data.error);
         }
+        setRefresh(false);
+      })
+      .catch((err) => {
+        setErrorMsg(err.message);
+        setTimeout(() => {
+          setErrorMsg("");
+        }, 3000);
+      });
+  };
+
+  const deleteOrder = (id) => {
+    setRefresh(true);
+    authAxios
+      .delete(`/order/${id}`, {})
+      .then((res) => {
+        const data = res.data;
+        if (data.errorCode !== 0) {
+          throw Error(data.error);
+        }
+        setRefresh(false);
       })
       .catch((err) => {
         setErrorMsg(err.message);
@@ -103,6 +126,7 @@ export const OrderContextProvider = ({ children }) => {
     errorMsg,
     orders,
     orderItems,
+    refresh,
     setOrderItems,
     totalCost,
     getRecipes,
@@ -110,6 +134,7 @@ export const OrderContextProvider = ({ children }) => {
     getOrders,
     createOrder,
     completeOrder,
+    deleteOrder,
   };
 
   return (

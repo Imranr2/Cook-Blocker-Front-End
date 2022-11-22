@@ -60,9 +60,8 @@ const ChefHome = () => {
               Orders
             </Typography>
             <Box component="img" src="order.svg"></Box>
-            <MenuButton>View Orders</MenuButton>
-            <MenuButton sx={{ backgroundColor: "transparent" }} disabled>
-              <Typography sx={{ color: "transparent" }}>View Order</Typography>
+            <MenuButton onClick={() => navigate("/order")} sx={{ mb: "47px" }}>
+              View Orders
             </MenuButton>
           </MenuCard>
         </Grid>
