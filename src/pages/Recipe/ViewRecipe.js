@@ -1,27 +1,26 @@
 import React, { useContext, useEffect } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import NavBar from "../../components/Navbar";
-import MenuButton from "../../components/MenuButton";
 import { useNavigate } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import RecipeContext from "../../frontendApis/recipe";
 import ActionButton from "../../components/ActionButton";
 
 const ViewRecipe = () => {
-  const { loading, getRecipes, recipes, selectedRecipe } =
+  const { loading, getRecipes, recipes, selectedRecipe, refresh } =
     useContext(RecipeContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getRecipes();
-  }, []);
+  }, [refresh]);
 
   const renderRecipeCards = () => {
     return recipes.map((recipe, idx) => {
-      console.log(recipe.image.imageUrl);
       return (
         <Grid item>
           <RecipeCard
+            id={recipe.id}
             name={recipe.name}
             imageUrl={recipe.image.imageUrl}
             price={recipe.price}
