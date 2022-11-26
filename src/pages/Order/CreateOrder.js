@@ -3,6 +3,7 @@ import { Box, Card, Grid, Typography, IconButton } from "@mui/material";
 import NavBar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import OrderContext from "../../frontendApis/order";
+import TableContext from "../../frontendApis/table";
 import OrderItem from "./OrderItem";
 import TableDropdown from "../Reservation/TableDropdown";
 import AddIcon from "@mui/icons-material/Add";
@@ -17,9 +18,16 @@ const CreateOrder = () => {
     orderItems,
     setOrderItems,
     getTotalCost,
+    createOrder,
     totalCost,
   } = useContext(OrderContext);
-  const navigate = useNavigate();
+
+  const { tableNumber, setTableNumber } = useContext(TableContext);
+
+  const create = () => {
+    createOrder(tableNumber);
+    setTableNumber(-1);
+  };
 
   useEffect(() => {
     getRecipes();
@@ -34,7 +42,7 @@ const CreateOrder = () => {
       return (
         <Grid item>
           <OrderItem
-            id={recipe.id}
+            recipeId={recipe.id}
             name={recipe.name}
             imageUrl={recipe.image.imageUrl}
             price={recipe.price}
@@ -51,7 +59,7 @@ const CreateOrder = () => {
     return orderItems.map((orderItem) => {
       const incrementQty = () => {
         const newState = orderItems.map((obj) => {
-          if (obj.id === orderItem.id) {
+          if (obj.menuItemId === orderItem.menuItemId) {
             return { ...obj, qty: orderItem.qty + 1 };
           }
           return obj;
@@ -62,7 +70,7 @@ const CreateOrder = () => {
       const decrementQty = () => {
         const newState = orderItems
           .map((obj) => {
-            if (obj.id === orderItem.id) {
+            if (obj.menuItemId === orderItem.menuItemId) {
               return { ...obj, qty: orderItem.qty - 1 };
             }
             return obj;
@@ -210,7 +218,9 @@ const CreateOrder = () => {
                     >
                       Table No.
                     </Typography>
-                    <TableDropdown />
+                    <Grid item sx={{ height: "40px" }}>
+                      <TableDropdown />
+                    </Grid>
                   </Box>
                 </Grid>
                 <Grid
@@ -266,7 +276,7 @@ const CreateOrder = () => {
                       sx={{ display: "flex", justifyContent: "space-between" }}
                     >
                       <Typography variant="subtitle1" sx={{ color: "#A9A9A9" }}>
-                        Total Amount:{" "}
+                        Total Amount:
                       </Typography>
                       <Typography
                         variant="h6"
@@ -301,7 +311,7 @@ const CreateOrder = () => {
                         Cancel
                       </ActionButton>
                       <ActionButton
-                        onClick={() => console.log("fulfill")}
+                        onClick={() => create()}
                         bgColor="primary.light"
                         bgHover="secondary.light"
                         sx={{

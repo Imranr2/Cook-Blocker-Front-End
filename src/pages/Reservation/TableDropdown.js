@@ -4,6 +4,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
+import { useContext } from "react";
+import TableContext from "../../frontendApis/table";
+import { useEffect } from "react";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -26,31 +29,40 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const TableDropdown = () => {
-  const [age, setAge] = React.useState("");
+  const { tableNumber, setTableNumber, tables, getTables, loading } =
+    useContext(TableContext);
+
+  useEffect(() => {
+    getTables();
+  }, []);
+
   return (
-    <div>
-      <FormControl sx={{ m: 1, marginLeft: "-1px" }}>
-        <Select
-          value={age}
-          onChange={(event) => setAge(event.target.value)}
-          displayEmpty
-          input={<BootstrapInput />}
-          renderValue={(selected) => {
-            if (selected === "") {
-              return <em>Select a table no.</em>;
-            }
-            return selected;
-          }}
-        >
-          <MenuItem value="" style={{ display: "none" }}>
-            None
-          </MenuItem>
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={30}>30</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
+    <>
+      {!loading && (
+        <FormControl sx={{ m: 1, marginLeft: "-1px" }}>
+          <Select
+            value={tableNumber}
+            onChange={(event) => setTableNumber(event.target.value)}
+            displayEmpty
+            input={<BootstrapInput />}
+            renderValue={(selected) => {
+              if (selected === -1) {
+                return <em>Select a table no.</em>;
+              }
+              return selected;
+            }}
+            sx={{ height: "40px" }}
+          >
+            <MenuItem value={-1} style={{ display: "none" }}>
+              None
+            </MenuItem>
+            {tables.map((table, idx) => {
+              return <MenuItem value={table.number}>{table.number}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+      )}
+    </>
   );
 };
 

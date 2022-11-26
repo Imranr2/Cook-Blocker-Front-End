@@ -21,6 +21,16 @@ import MenuButton from "../../components/MenuButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { withStyles } from "@material-ui/core";
 
+const CssTextField = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "transparent",
+      },
+    },
+  },
+})(TextField);
+
 const CreateRecipe = () => {
   const [recipeName, setRecipeName] = useState("");
   const [description, setDescription] = useState("");
@@ -84,16 +94,6 @@ const CreateRecipe = () => {
     setImage(null);
     setIngredients([]);
   };
-
-  const CssTextField = withStyles({
-    root: {
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: "transparent",
-        },
-      },
-    },
-  })(TextField);
 
   return (
     <Grid
