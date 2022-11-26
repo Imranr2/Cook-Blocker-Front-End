@@ -11,23 +11,52 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import ActionButton from "../../components/ActionButton";
 import TableDropdown from "./TableDropdown";
 import { withStyles } from "@material-ui/core";
+import { useContext } from "react";
+import ReservationContext from "../../frontendApis/reservation";
+import TableContext from "../../frontendApis/table";
+
+const CssTextField = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "transparent",
+      },
+    },
+    "& .Mui-focused": {
+      "& fieldset": {
+        borderRadius: "8px",
+      },
+    },
+  },
+})(TextField);
 
 const CreateReservation = () => {
   const [customerName, setCustomerName] = useState("");
-  const [contactNo, setContactNo] = useState("");
+  const [customerPhone, setcustomerPhone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [pax, setPax] = useState(0);
 
-  const CssTextField = withStyles({
-    root: {
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: "transparent",
-        },
-      },
-    },
-  })(TextField);
+  const { errorMsg, loading, createReservation, fulfillReservation } =
+    useContext(ReservationContext);
+
+  const { tableNumber, setTableNumber } = useContext(TableContext);
+
+  const create = () => {
+    createReservation(
+      customerName,
+      customerPhone,
+      tableNumber,
+      pax,
+      new Date(time).toISOString()
+    );
+    setCustomerName("");
+    setcustomerPhone("");
+    setDate("");
+    setTime("");
+    setPax(0);
+    setTableNumber(-1);
+  };
 
   return (
     <Grid
@@ -120,9 +149,9 @@ const CreateReservation = () => {
                 Contact No.
               </Typography>
               <CssTextField
-                value={contactNo}
+                value={customerPhone}
                 variant="outlined"
-                label={contactNo === "" ? "+1 (xxx) xxx-xxxx" : ""}
+                label={customerPhone === "" ? "+1 (xxx) xxx-xxxx" : ""}
                 inputProps={{ maxLength: 38 }}
                 InputLabelProps={{
                   shrink: false,
@@ -138,7 +167,7 @@ const CreateReservation = () => {
                   },
                   borderRadius: "8px",
                 }}
-                onChange={(e) => setContactNo(e.target.value)}
+                onChange={(e) => setcustomerPhone(e.target.value)}
               />
               <Box sx={{ display: "flex", gap: "24px" }}>
                 <Grid container direction="column">
@@ -298,7 +327,6 @@ const CreateReservation = () => {
                 Cancel
               </ActionButton>
               <ActionButton
-                onClick={() => console.log("fulfill")}
                 bgColor="primary.light"
                 bgHover="secondary.light"
                 sx={{
@@ -306,6 +334,7 @@ const CreateReservation = () => {
                   padding: "5px 40px",
                   margin: "0px",
                 }}
+                onClick={() => create()}
               >
                 Add Reservation
               </ActionButton>

@@ -22,8 +22,8 @@ const Register = () => {
       <div className="left">
         <img className="landing-image" src="/LandingImage.svg" alt="" />
         <div className="title">
-          <span color="#EB7C68">Cook</span>
-          <span color="#EAECF5">Blocker</span>
+          <span style={{ color: "#EB7C68" }}>Cook</span>
+          <span style={{ color: "#EAECF5" }}>Blocker</span>
         </div>
       </div>
       <div className="right">
@@ -73,11 +73,13 @@ const Register = () => {
                   id="role"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
+                  className="last"
                 />
               </label>
               <div>
                 <button type="submit">Register</button>
               </div>
+              <a href="/">Already have an account? Click here</a>
               {errorMsg && <div>{errorMsg}</div>}
             </form>
           </div>

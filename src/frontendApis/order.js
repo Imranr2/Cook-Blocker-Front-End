@@ -52,14 +52,16 @@ export const OrderContextProvider = ({ children }) => {
       });
   };
 
-  const createOrder = (tableNo, price) => {
+  const createOrder = (tableNumber) => {
     authAxios
       .post("/order", {
-        tableNumber: tableNo,
-        price: price,
+        tableNumber: tableNumber,
+        price: parseFloat(totalCost),
         orderItems: orderItems,
       })
       .then((res) => {
+        setTotalCost(0);
+        setOrderItems([]);
         const data = res.data;
         if (data.errorCode !== 0) {
           throw Error(data.error);
@@ -75,7 +77,6 @@ export const OrderContextProvider = ({ children }) => {
 
   const completeOrder = (id) => {
     setRefresh(true);
-
     authAxios
       .put(`/order/${id}`, {})
       .then((res) => {

@@ -16,7 +16,7 @@ import { useContext } from "react";
 import OrderContext from "../../frontendApis/order";
 import { useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import parseDateTime from "../../utils/dateTimeParser";
+import { parseDateTimeString } from "../../utils/dateTimeParser";
 
 const ViewOrder = () => {
   const { loading, getOrders, orders, deleteOrder, completeOrder, refresh } =
@@ -33,7 +33,10 @@ const ViewOrder = () => {
       const orderItems = order.orderItems;
       const generate = () => {
         return orderItems.map((orderItem, idx) => (
-          <ListItem key={idx} sx={{ padding: "0px", display: "list-item" }}>
+          <ListItem
+            key={idx}
+            sx={{ padding: "0px", display: "list-item", width: "100%" }}
+          >
             <ListItemText
               primary={orderItem.qty + "x " + orderItem.menuItem.name}
               primaryTypographyProps={{
@@ -89,7 +92,7 @@ const ViewOrder = () => {
                 <Typography
                   sx={{ fontSize: "10px", fontWeight: 700, color: "#A9A9A9" }}
                 >
-                  {parseDateTime(order.createdAt)}
+                  {parseDateTimeString(order.createdAt)}
                 </Typography>
               </Grid>
               <List disablePadding sx={{ listStyleType: "disc", pl: 2 }}>
@@ -108,7 +111,8 @@ const ViewOrder = () => {
             <Button
               variant="contained"
               sx={{
-                width: "100%",
+                minWidth: "100%",
+                whiteSpace: "nowrap",
                 justifyContent: "center",
                 backgroundColor: "#287B2B",
                 borderRadius: "0px",

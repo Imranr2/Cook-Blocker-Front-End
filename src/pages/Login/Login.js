@@ -20,8 +20,8 @@ const Login = () => {
       <div className="left">
         <img className="landing-image" src="/LandingImage.svg" alt="" />
         <div className="title">
-          <span color="#EB7C68">Cook</span>
-          <span color="#EAECF5">Blocker</span>
+          <span style={{ color: "#EB7C68" }}>Cook</span>
+          <span style={{ color: "#EAECF5" }}>Blocker</span>
         </div>
       </div>
       <div className="right">
@@ -49,11 +49,13 @@ const Login = () => {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="last"
                 />
               </label>
               <div>
                 <button type="submit">Login</button>
               </div>
+              <a href="/register">Don't have an account? Click here</a>
               {errorMsg && <div>{errorMsg}</div>}
             </form>
           </div>

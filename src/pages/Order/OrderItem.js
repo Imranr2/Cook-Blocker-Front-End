@@ -8,26 +8,24 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import ActionButton from "../../components/ActionButton";
 import OrderContext from "../../frontendApis/order";
-import { useEffect } from "react";
 import { useTheme } from "styled-components";
 
-const OrderItem = ({ id, name, imageUrl, price, description }) => {
+const OrderItem = ({ recipeId, name, imageUrl, price, description }) => {
   const { orderItems, setOrderItems } = useContext(OrderContext);
 
   const theme = useTheme();
   const addOrderItem = () => {
     for (var i = 0; i < orderItems.length; i++) {
-      if (orderItems[i].id == id) {
+      if (orderItems[i].menuItemId == recipeId) {
         return;
       }
     }
     setOrderItems([
       ...orderItems,
       {
-        id: id,
+        menuItemId: recipeId,
         name: name,
         imageUrl: imageUrl,
         price: price,
