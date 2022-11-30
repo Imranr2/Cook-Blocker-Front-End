@@ -33,7 +33,14 @@ const ChefHome = () => {
           }}
         >
           <Typography variant="h5" sx={{ color: "primary.contrastText" }}>
-            Welcome back, Chef {name}
+            Welcome back, Chef{" "}
+            <Typography
+              variant="h5"
+              display="inline"
+              sx={{ color: "primary.light" }}
+            >
+              {localStorage.getItem("name")}
+            </Typography>
           </Typography>
         </Box>
         <Prompt />

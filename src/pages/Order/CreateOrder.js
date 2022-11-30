@@ -218,9 +218,7 @@ const CreateOrder = () => {
                     >
                       Table No.
                     </Typography>
-                    <Grid item sx={{ height: "40px" }}>
-                      <TableDropdown />
-                    </Grid>
+                    <TableDropdown />
                   </Box>
                 </Grid>
                 <Grid

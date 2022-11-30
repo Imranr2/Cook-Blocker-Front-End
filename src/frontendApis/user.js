@@ -46,8 +46,8 @@ export const UserContextProvider = ({ children }) => {
           throw Error(data.error);
         }
         const user = data.user;
-        setName(user.name);
-        setRole(user.role);
+        localStorage.setItem("name", user.name);
+        localStorage.setItem("role", user.role);
         setIsAuth(true);
         navigate("/home");
       })

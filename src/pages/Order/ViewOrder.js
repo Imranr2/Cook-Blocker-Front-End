@@ -53,7 +53,7 @@ const ViewOrder = () => {
           <Card
             elevation={0}
             sx={{
-              width: "80%",
+              width: "230px",
               borderRadius: "8px",
             }}
           >
@@ -111,8 +111,7 @@ const ViewOrder = () => {
             <Button
               variant="contained"
               sx={{
-                minWidth: "100%",
-                whiteSpace: "nowrap",
+                width: "100%",
                 justifyContent: "center",
                 backgroundColor: "#287B2B",
                 borderRadius: "0px",
@@ -166,6 +165,7 @@ const ViewOrder = () => {
                   rowGap: "10px",
                   columnGap: "30px",
                   alignSelf: "center",
+                  justifyContent: "center",
                   padding: "0px 56px",
                   mt: "44px",
                 }}

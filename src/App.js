@@ -29,7 +29,7 @@ function App() {
           <Route
             path="/home"
             element={
-              role === "chef" ? (
+              localStorage.getItem("role") === "chef" ? (
                 <RecipeContextProvider>
                   <ChefHome />
                 </RecipeContextProvider>

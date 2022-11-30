@@ -31,8 +31,15 @@ const ServerHome = () => {
             paddingLeft: "56px",
           }}
         >
-          <Typography variant="h4" sx={{ color: "primary.contrastText" }}>
-            Welcome back, Server {name}
+          <Typography variant="h5" sx={{ color: "primary.contrastText" }}>
+            Welcome back, Server{" "}
+            <Typography
+              variant="h5"
+              display="inline"
+              sx={{ color: "primary.light" }}
+            >
+              {localStorage.getItem("name")}
+            </Typography>
           </Typography>
         </Box>
         <Prompt />

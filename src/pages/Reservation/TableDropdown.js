@@ -51,7 +51,6 @@ const TableDropdown = () => {
               }
               return selected;
             }}
-            sx={{ height: "40px" }}
           >
             <MenuItem value={-1} style={{ display: "none" }}>
               None

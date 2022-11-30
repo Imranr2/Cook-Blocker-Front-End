@@ -43,12 +43,16 @@ const CreateReservation = () => {
   const { tableNumber, setTableNumber } = useContext(TableContext);
 
   const create = () => {
+    let t = new Date(time);
+    let dateTime = new Date(date);
+    dateTime.setHours(t.getHours());
+    dateTime.setMinutes(t.getMinutes());
     createReservation(
       customerName,
       customerPhone,
       tableNumber,
       pax,
-      new Date(time).toISOString()
+      dateTime.toISOString()
     );
     setCustomerName("");
     setcustomerPhone("");
@@ -182,7 +186,10 @@ const CreateReservation = () => {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
                       value={date || null}
-                      onChange={(newDate) => setDate(newDate)}
+                      onChange={(newDate) => {
+                        console.log(newDate);
+                        setDate(newDate);
+                      }}
                       renderInput={(params) => (
                         <CssTextField
                           {...params}
@@ -221,7 +228,10 @@ const CreateReservation = () => {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <TimePicker
                       value={time || null}
-                      onChange={(newTime) => setTime(newTime)}
+                      onChange={(newTime) => {
+                        console.log(newTime);
+                        setTime(newTime);
+                      }}
                       renderInput={(params) => (
                         <CssTextField
                           {...params}
@@ -300,7 +310,7 @@ const CreateReservation = () => {
               >
                 Table No.
               </Typography>
-              <TableDropdown></TableDropdown>
+              <TableDropdown />
             </Grid>
             <Box
               sx={{
